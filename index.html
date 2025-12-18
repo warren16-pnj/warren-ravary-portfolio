@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Warren Ravary</title>
+    <meta name="description" content="Portfolio de Warren Ravary, étudiant en BUT Mesures Physiques à l'IUT de Blois. Projets et compétences.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET ET STYLES DE BASE --- */
+        :root {
+            --primary-color: #0A2647; /* Bleu nuit ingénieur */
+            --accent-color: #144272; /* Bleu plus clair */
+            --highlight: #205295;
+            --text-light: #f1f1f1;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-off-white: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a:hover {
+            color: #ccc;
+        }
+
+        /* --- HERO SECTION (ACCUEIL) --- */
+        #accueil {
+            height: 90vh;
+            background: linear-gradient(rgba(10, 38, 71, 0.9), rgba(10, 38, 71, 0.8)), url('https://placehold.co/1920x1080/0A2647/FFFFFF?text=Background+Tech'); /* Image de fond temporaire */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        #accueil h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        #accueil p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--highlight);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- SECTIONS GÉNÉRALES --- */
+        section {
+            padding: 60px 10%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--highlight);
+            margin: 10px auto;
+        }
+
+        /* --- À PROPOS & FORMATION --- */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .timeline-item {
+            border-left: 3px solid var(--highlight);
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--highlight);
+        }
+
+        /* --- COMPÉTENCES --- */
+        #competences {
+            background-color: var(--bg-off-white);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* --- PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Placeholder image styles */
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Pour remplacer les images, changez les src dans le HTML */
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .project-tags {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* --- CONTACT --- */
+        #contact {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+        
+        #contact h2::after {
+            background-color: white;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #05162b;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            #accueil h1 { font-size: 2.2rem; }
+            nav ul { display: none; } /* Menu simplifié pour mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">WR.</div>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#a-propos">À propos</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="accueil">
+        <h1>Warren Ravary</h1>
+        <p>Étudiant en 2ème année de BUT Mesures Physiques à l'IUT de Blois.</p>
+        <p>Passionné par l'instrumentation, l'électronique et la gestion de projet.</p>
+        <a href="#projets" class="btn">Voir mes projets</a>
+    </section>
+
+    <section id="a-propos">
+        <h2>À propos de moi</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Bonjour et bienvenue sur mon portfolio. Actuellement en cursus universitaire, je me spécialise dans les techniques d'instrumentation.</p>
+                <br>
+                <p>Ce portfolio retrace les projets techniques réalisés au cours de ma formation ainsi que mes expériences professionnelles en milieu industriel.</p>
+            </div>
+            <div class="about-text">
+                <h3>Mon Parcours</h3>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Aujourd'hui</div>
+                    <h4>BUT Mesures Physiques</h4>
+                    <p>IUT de Blois - Spécialité "Techniques d'instrumentations"</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2023</div>
+                    <h4>Baccalauréat (Maths / Physique)</h4>
+                    <p>Lycée international François I - Option Maths Expertes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences">
+        <h2>Compétences Techniques</h2>
+        <div class="skills-grid">
+            <span class="skill-tag">Électronique & Brasure</span>
+            <span class="skill-tag">Conception PCB (KiCad)</span>
+            <span class="skill-tag">Programmation C++ / Arduino</span>
+            <span class="skill-tag">LabVIEW & NI Max</span>
+            <span class="skill-tag">Analyse de données (Excel, MX Assistant)</span>
+            <span class="skill-tag">Gestion de projets</span>
+            <span class="skill-tag">Travail en équipe</span>
+        </div>
+    </section>
+
+    <section id="projets">
+        <h2>Projets Réalisés</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <span>Image: Carte PCB</span>
+                </div>
+                <div class="project-content">
+                    <h3>Détecteur de Lumière</h3>
+                    <p><strong>BUT 1 (2023)</strong></p>
+                    <p>Conception et réalisation intégrale d'un circuit imprimé.</p>
+                    <ul>
+                        <li>Conception CAO sur KiCad</li>
+                        <li>Assemblage et soudure des composants</li>
+                        <li>Tests et validation</li>
+                    </ul>
+                    <div class="project-tags">#Électronique #KiCad #Arduino</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                     <span>Image: Piano Laser</span>
+                </div>
+                <div class="project-content">
+                    <h3>Piano Laser (Style JMJ)</h3>
+                    <p><strong>BUT 1 (2024)</strong></p>
+                    <p>Création d'un instrument utilisant des lasers et photodiodes pour simuler des touches.</p>
+                    <ul>
+                        <li>Programmation Arduino (C++)</li>
+                        <li>Fabrication du boîtier</li>
+                        <li>Fiabilité et temps de réponse rapide</li>
+                    </ul>
+                    <div class="project-tags">#C++ #Conception #Arduino</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                     <span>Image: Labo SKF</span>
+                </div>
+                <div class="project-content">
+                    <h3>Système d'Acquisition (SKF)</h3>
+                    <p><strong>Stage (Avril-Juin 2025)</strong></p>
+                    <p>Mise en service d'une carte d'acquisition au laboratoire SKF (Saint-Cyr-Sur-Loire).</p>
+                    <ul>
+                        <li>Comparaison cartes NI vs HBM</li>
+                        <li>Prise en main chaîne d'acquisition</li>
+                        <li>Développement LabVIEW</li>
+                    </ul>
+                    <div class="project-tags">#Industrie #LabVIEW #R&D</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p>📍 Blois, 41000</p>
+            <p>📧 <a href="mailto:warren.ravary@etu.univ-tours.fr">warren.ravary@etu.univ-tours.fr</a></p>
+            <p>📧 <a href="mailto:warren.ravary@gmail.com">warren.ravary@gmail.com</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Warren Ravary - Portfolio Mesures Physiques</p>
+    </footer>
+
+</body>
+</html>
